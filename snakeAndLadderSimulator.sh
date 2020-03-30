@@ -30,14 +30,18 @@ function checkForOptions() {
 			playerPosition=$(($playerPosition - $dieNumber))
 			;;
 	esac
-	positionBelowStart
+	BelowStartAboveWin
 }
 
-#If position moves below 0, restarts from 0
+#If position is below 0, restarts from 0
+#Or if its above 100, stays in previous position
 function positionBelowStart() {
 	if [ $playerPosition -lt $INITIAL_POSITION ]
 	then
 		playerPosition=$INITIAL_POSITION
+	elif [ $playerPosition -gt $WINNING_POSITION ]
+	then
+		playerPosition=$(($playerPosition - $dieNumber))
 	fi
 }
 
