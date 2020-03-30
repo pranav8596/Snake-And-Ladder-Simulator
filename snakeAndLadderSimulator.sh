@@ -2,6 +2,7 @@
 
 #Constants
 INITIAL_POSITION=0
+WINNING_POSITION=100
 NO_PLAY=0
 LADDER=1
 SNAKE=2
@@ -30,4 +31,13 @@ function checkForOptions() {
 			;;
 	esac
 }
-checkForOptions
+
+#To repeat the player till reaches the winning position
+function snakeAndLadderSimulator() {
+	while [ $playerPosition -ne $WINNING_POSITION ]
+	do
+		checkForOptions
+	done
+}
+
+snakeAndLadderSimulator
