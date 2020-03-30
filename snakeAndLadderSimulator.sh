@@ -30,6 +30,15 @@ function checkForOptions() {
 			playerPosition=$(($playerPosition - $dieNumber))
 			;;
 	esac
+	positionBelowStart
+}
+
+#If position moves below 0, restarts from 0
+function positionBelowStart() {
+	if [ $playerPosition -lt $INITIAL_POSITION ]
+	then
+		playerPosition=$INITIAL_POSITION
+	fi
 }
 
 #To repeat the player till reaches the winning position
@@ -40,4 +49,5 @@ function snakeAndLadderSimulator() {
 	done
 }
 
+#Main
 snakeAndLadderSimulator
